@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 3</title>
+</head>
+<body>
+    <h2>Indentificador de palíndromo</h2>
+    <label for="x">Escreva uma palavra</label>
+    <input type="text" name="x" id="x">
+    <button type="submit" id="botao">Verificar</button>
+    <p id="resultado"></p>
+</body>
+<script type="text/javascript">
+
+    function verificarPalindromo(x){
+        let palavra = x.toLowerCase();
+        let fim = x.length - 1;
+        for (let i = 0; i < x.length / 2; i++) {
+            if (palavra[i] != palavra[fim]){
+                return false;
+            }
+            fim --;
+        }
+        return true;           
+    }
+
+    document.getElementById("botao").addEventListener("click", ()=>{
+        let palavra = document.getElementById("x").value;
+        let resultado = verificarPalindromo(palavra);
+        document.getElementById("resultado").textContent = resultado ? "É um palíndromo!" : "Não é um palíndromo.";
+    });
+</script>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 1</title>
+    <script type="text/javascript">
+        let data = new Date();
+        let dia_semana = data.getDay();
+        let dia_mes = data.getDate();
+        let mes = data.getMonth();
+        let ano = data.getYear() + 1900;
+
+        function converterDiaSemana(dia_semana){
+            switch (dia_semana) {
+                case 0:
+                    dia_semana = "Domingo";
+                    break;
+                case 1:
+                    dia_semana = "Segunda-feira";
+                    break;
+                case 2:
+                    dia_semana = "Terça-feira";
+                    break;
+                case 3:
+                    dia_semana = "Quarta-feira";
+                    break;
+                case 4:
+                    dia_semana = "Quinta-feira";
+                    break;
+                case 5:
+                    dia_semana = "Sexta-feira";
+                    break;
+                case 6:
+                    dia_semana = "Sábado";
+                    break;
+                default:
+                    break;
+            }
+            return dia_semana
+        }
+
+        function converterMes(mes){
+            switch (mes) {
+                case 0:
+                    mes = "janeiro";
+                    break;
+                case 1:
+                    mes = "fevereiro";
+                    break;
+                case 2:
+                    mes = "março";
+                    break;
+                case 3:
+                    mes = "abril";
+                    break;
+                case 4:
+                    mes = "maio";
+                    break;
+                case 5:
+                    mes = "junho";
+                    break;
+                case 6:
+                    mes = "julho";
+                    break;
+                case 7:
+                    mes = "agosto";
+                    break;
+                case 8:
+                    mes = "setembro";
+                    break;
+                case 9:
+                    mes = "outubro";
+                    break;
+                case 10:
+                    mes = "novembro";
+                    break;
+                case 11:
+                    mes = "dezembro";
+                    break;
+                default:
+                    break;
+            }
+            return mes;
+        }
+
+        document.write(converterDiaSemana(dia_semana)+", "+dia_mes + " de " + converterMes(mes) + " de " + ano)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

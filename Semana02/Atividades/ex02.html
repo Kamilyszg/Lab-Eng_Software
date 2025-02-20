@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 2</title>
+    <script type="text/javascript">
+        let data = new Date();
+        let horas = data.getHours();
+        let minutos = data.getMinutes();
+        let segundos = data.getSeconds()
+
+        function formatarHorario(horas, minutos, segundos){
+            document.write(horas + " : " + minutos +" : " + segundos)
+        }
+
+        // atualizar a cada 1 segundo
+        setTimeout(formatarHorario(horas, minutos, segundos), 1000)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
