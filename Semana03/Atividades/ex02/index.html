@@ -6,94 +6,123 @@
     <title>Atividade 2</title>
     <script type="text/javascript">
         window.onload = function() {
-            function anosUtilizacao(ano){
-                let anos_utilizacao = 2024 - ano;
-                return anos_utilizacao;
-            }
 
-            function valorMercado(km, anos_uso, vfipe){
-                let fipe = 0;
-                let calculo = km / anos_uso;
+            function Carro(){
+                let ano, km, valor_fipe;
 
-                if (calculo <= 30000) {
-                    fipe = vfipe * 1.1;
-                } else if (calculo > 30000 && calculo <= 50000) {
-                    fipe = vfipe;
-                } else if (calculo > 50000) {
-                    fipe = vfipe * 0.9;
-                } else {
-                    alert("Valor inválido!");
-                    return null;
+                this.setAno = function(ano){this.ano = ano};
+                this.getAno = function(){return this.ano};
+
+                this.setKm = function(km){this.km = km};
+                this.getKm = function(){return this.km};
+
+                this.setValor = function(valor){this.valor_fipe = valor};
+                this.getValor = function(){return this.valor_fipe};
+
+                this.anosUtilizacao = function(ano){
+                    let anos_utilizacao = 2024 - ano;
+                    return anos_utilizacao;
                 }
-                return fipe;
+
+                this.valorMercado = function(km, anos_uso, valor_fipe){
+                    let fipe = 0;
+                    let calculo = km / anos_uso;
+
+                    if (calculo <= 30000) {
+                        fipe = valor_fipe * 1.1;
+                    } else if (calculo > 30000 && calculo <= 50000) {
+                        fipe = valor_fipe;
+                    } else if (calculo > 50000) {
+                        fipe = valor_fipe * 0.9;
+                    } else {
+                        alert("Valor inválido!");
+                        return null;
+                    }
+                    return fipe;
+                }
             }
-
+                
             document.getElementById("botao").addEventListener("click", (event)=>{
-                event.preventDefault();
+                event.preventDefault(); // impede o recarregamento da página
 
-                let ano_uso = parseInt(document.getElementById("ano").value);
-                let valor = parseFloat(document.getElementById("vfipe").value);
+                // maneira de formatar o valor de acordo com a moeda
+                function formatarValor(valor) {
+                    return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                }
+
+                let carro = new Carro();
+
+                let ano = parseInt(document.getElementById("ano").value);
                 let km = parseFloat(document.getElementById("km").value);
+                let valor = parseFloat(document.getElementById("vfipe").value);
+            
+                carro.setAno(ano);
+                carro.setKm(km);
+                carro.setValor(valor);
 
-                let anos = anosUtilizacao(ano_uso);
-                let valor_final = valorMercado(km, anos, valor);
+                let anos_uso = carro.anosUtilizacao(ano);
+                let valor_final = carro.valorMercado(km, anos_uso, valor);
 
-                let p = document.createElement("p");
-                let resultado = document.createTextNode("Anos de Utilização: " + anos + " | Valor de Mercado: " + valor_final);
-                p.appendChild(resultado);;
-                document.body.appendChild(p);
+                let valor_formatado = formatarValor(valor_final);
+
+                let resultado = document.getElementById("resultado");
+                resultado.innerHTML = `Anos de Utilização: <strong>${anos_uso}</strong> | Valor de Mercado: <strong>${valor_formatado}</strong>`;
+                
             });
+            
         }
     </script>
-
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   </head>
   <body>
-    <h2>Informações do veículo</h2>
-    <form>
-        <div class="row">
-            <div class="col">
-                <label for="marca">Marca</label>
-                <input type="text" name="marca" id="marca">
+    <div class="container">
+        <h2 class="mt-5 mb-3">Informações do veículo</h2>
+        <form >
+            <div class="row mt-2">
+                <div class="col">
+                    <label for="marca">Marca</label>
+                    <input type="text" name="marca" id="marca">
+                </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <label for="modelo">Modelo</label>
+                    <input type="text" name="modelo" id="modelo">
+                </div>
             </div>
-        <div class="row">
-            <div class="col">
-                <label for="modelo">Modelo</label>
-                <input type="text" name="modelo" id="modelo">
+            <div class="row mt-2">
+                <div class="col">
+                    <label for="ano">Ano</label>
+                    <input type="text" name="ano" id="ano">
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label for="ano">Ano</label>
-                <input type="text" name="ano" id="ano">
+            <div class="row mt-2">
+                <div class="col">
+                    <label for="cor">Cor</label>
+                    <input type="text" name="cor" id="cor">
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label for="cor">Cor</label>
-                <input type="text" name="cor" id="cor">
+            <div class="row mt-2">
+                <div class="col">
+                    <label for="km">Quilometragem</label>
+                    <input type="number" step="0.01" name="km" id="km">
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label for="km">Quilometragem</label>
-                <input type="number" step="0.01" name="km" id="km">
+            <div class="row mt-2">
+                <div class="col">
+                    <label for="vfipe">Valor Fipe</label>
+                    <input type="number" step="0.01" name="vfipe" id="vfipe">
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label for="vfipe">Valor Fipe</label>
-                <input type="number" step="0.01" name="vfipe" id="vfipe">
+            <div class="row mt-2">
+                <div class="col">
+                    <button type="submit" id="botao">Enviar</button>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <button type="submit" id="botao">Enviar</button>
-            </div>
-        </div>
-    </form>
+        </form>
 
+        <div id="resultado" class="mt-3"></div>
+
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
