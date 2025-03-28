@@ -1,65 +1,78 @@
 body {
     display: flex;
     justify-content: center;
-    align-items: flex-start;  
-    background-color: white;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh; 
+    align-items: center;
+    height: 100vh;
+    background-color: black;
 }
 
 .calculadora {
-    background: black;
+    width: 320px;
     padding: 20px;
-    width: 400px;
-    height: 585px;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.div_resultado {
-    padding: 5px;
-    width: 380px;
-    height: 100px;
-    color: white;
-    font-size: 80px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-align: right;
-    border: 2px solid white;
-    line-height: 90px;
-}
-
-.div_elementos {
-    padding: 15px;
-    margin-top: 10px;
-    width: 380px;
-    height: 453px;
-    border: 2px solid white;
+    background: black;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;  /* Espaço entre as linhas */
-    justify-content: space-between;  /* Distribui o espaço entre as linhas */
-}
-
-.row {
-    display: flex;
-    justify-content: space-around;  /* Distribui as bolinhas de forma igual entre as colunas */
-    align-items: center;            /* Alinha as bolinhas no centro verticalmente */
-    flex-grow: 1;                   /* Faz com que as linhas cresçam para ocupar o espaço disponível */
-}
-
-.elemento {
-    width: 80px;                /* Tamanho da bolinha */
-    height: 80px;               /* Tamanho da bolinha */
-    border-radius: 50%;         /* Faz o elemento redondo */
-    background-color: #3498db;  /* Cor de fundo das bolinhas */
-    display: flex;
     align-items: center;
-    justify-content: center;
-    color: white;               /* Cor do texto */
 }
 
-.especial {
-    background: gray;
+.tela {
+    width: 100%;
+    height: 80px;
+    background: black;
+    color: white;
+    text-align: right;
+    padding: 20px;
+    font-size: 2rem;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.botoes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.botao {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    background: #333;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botao.zero {
+    width: 130px;
+    border-radius: 30px;
+    grid-column: span 2;
+}
+
+.botao:hover {
+    background: #555;
+}
+
+.botao.funcao {
+    background: #a5a5a5;
+    color: black;
+}
+
+.botao.funcao:hover {
+    background: #d4d4d2;
+}
+
+.botao.operador {
+    background: #ff9500;
+}
+
+.botao.operador:hover {
+    background: #e08900;
 }

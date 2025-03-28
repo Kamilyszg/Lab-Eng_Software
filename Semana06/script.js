@@ -1,64 +1,174 @@
 window.onload = function() {
-    let div = document.getElementById("calculadora");
+    let calculadora = document.getElementById("calculadora");
 
-    let div_resultado = document.createElement("div");
-    div_resultado.setAttribute("class", "div_resultado");
-    div_resultado.setAttribute("id", "resultado");
+    let tela = document.createElement("div");
+    tela.setAttribute("class", "tela");
 
-    let resultado_valor = document.createTextNode("0");
-    div_resultado.appendChild(resultado_valor);
-    div.appendChild(div_resultado);
+    let resultadoFinal = document.createElement("div"); 
+    resultadoFinal.setAttribute("id", "resultadoFinal"); 
+    resultadoFinal.appendChild(document.createTextNode("0")); 
 
-    let div_elementos = document.createElement("div");
-    div_elementos.setAttribute("class", "div_elementos");
+    let botoes = document.createElement("div");
+    botoes.setAttribute("class", "botoes");
 
-    div.appendChild(div_elementos);
+    tela.appendChild(resultadoFinal)
+    calculadora.appendChild(tela);
+    calculadora.appendChild(botoes);
+    
+    // linha 1
 
-    let div_row1 = document.createElement("div");
-    div_row1.setAttribute("class", "row");
+    // botões de função
+    let ac = document.createElement("div");
+    ac.setAttribute("class", "botao funcao");
+    ac.setAttribute("id", "ac");
+    ac.appendChild(document.createTextNode("AC"));
 
-    div_elementos.appendChild(div_row1);
+    let maisMenos = document.createElement("div");
+    maisMenos.setAttribute("class", "botao funcao");
+    maisMenos.setAttribute("id", "maisMenos");
+    maisMenos.appendChild(document.createTextNode("+/-"));
 
-    //ac
-    let div_ac = document.createElement("div");
-    div_ac.setAttribute("class", "elemento especial");
-    div_ac.setAttribute("id", "ac")
+    let porcentagem = document.createElement("div");
+    porcentagem.setAttribute("class", "botao funcao");
+    porcentagem.setAttribute("id", "porcentagem");
+    porcentagem.appendChild(document.createTextNode("%"));
 
-    let valor_ac = document.createTextNode("AC");
-    div_ac.appendChild(valor_ac);
+    botoes.appendChild(ac);
+    botoes.appendChild(maisMenos);
+    botoes.appendChild(porcentagem);
 
-    //+/-
-    let div_mais_menos = document.createElement("div");
-    div_mais_menos.setAttribute("class", "elemento especial");
-    div_mais_menos.setAttribute("id", "mais_menos");
+    // operador
+    let divisao = document.createElement("div");
+    divisao.setAttribute("class", "botao operador");
+    divisao.setAttribute("id", "divisao");
+    divisao.appendChild(document.createTextNode("÷"));
 
-    let valor_mais_menos = document.createTextNode("+/-");
-    div_mais_menos.appendChild(valor_mais_menos);
+    botoes.appendChild(divisao);
 
-    //%
-    let div_porcentagem = document.createElement("div");
-    div_porcentagem.setAttribute("class", "elemento especial");
+    // linha 2
 
-    div_row1.appendChild(div_ac)
-    div_row1.appendChild(div_mais_menos)
+    let sete = document.createElement("div");
+    sete.setAttribute("class", "botao");
+    sete.setAttribute("id", "sete")
+    sete.appendChild(document.createTextNode("7"));
 
-    let div_row2 = document.createElement("div");
-    div_row2.setAttribute("class", "row");
+    let oito = document.createElement("div");
+    oito.setAttribute("class", "botao");
+    oito.setAttribute("id", "oito");
+    oito.appendChild(document.createTextNode("8"));
 
-    div_elementos.appendChild(div_row2);
+    let nove = document.createElement("div");
+    nove.setAttribute("class", "botao");
+    nove.setAttribute("id", "nove");
+    nove.appendChild(document.createTextNode("9"));
 
-    let div_row3 = document.createElement("div");
-    div_row3.setAttribute("class", "row");
+    // operador 
+    let multiplicacao = document.createElement("div");
+    multiplicacao.setAttribute("class", "botao operador");
+    multiplicacao.setAttribute("id", "multiplicacao");
+    multiplicacao.appendChild(document.createTextNode("x"));
 
-    div_elementos.appendChild(div_row3);
+    botoes.appendChild(sete);
+    botoes.appendChild(oito);
+    botoes.appendChild(nove);
+    botoes.appendChild(multiplicacao);
 
-    let div_row4 = document.createElement("div");
-    div_row4.setAttribute("class", "row");
+    // linha 3
 
-    div_elementos.appendChild(div_row4);
+    let quatro = document.createElement("div");
+    quatro.setAttribute("class", "botao");
+    quatro.setAttribute("id", "quatro");
+    quatro.appendChild(document.createTextNode("4"));
 
-    let div_row5 = document.createElement("div");
-    div_row5.setAttribute("class", "row");
+    let cinco = document.createElement("div");
+    cinco.setAttribute("class", "botao");
+    cinco.setAttribute("id", "cinco");
+    cinco.appendChild(document.createTextNode("5"));
 
-    div_elementos.appendChild(div_row5);
+    let seis = document.createElement("div");
+    seis.setAttribute("class", "botao");
+    seis.setAttribute("id", "seis");
+    seis.appendChild(document.createTextNode("6"));
+
+    // operador 
+    let menos = document.createElement("div");
+    menos.setAttribute("class", "botao operador");
+    menos.setAttribute("id", "menos");
+    menos.appendChild(document.createTextNode("-"));
+
+    botoes.appendChild(quatro);
+    botoes.appendChild(cinco);
+    botoes.appendChild(seis);
+    botoes.appendChild(menos);
+
+    // linha 4
+
+    let um = document.createElement("div");
+    um.setAttribute("class", "botao");
+    um.setAttribute("id", "um");
+    um.appendChild(document.createTextNode("1"));
+
+    let dois = document.createElement("div");
+    dois.setAttribute("class", "botao");
+    dois.setAttribute("id", "dois");
+    dois.appendChild(document.createTextNode("2"));
+
+    let tres = document.createElement("div");
+    tres.setAttribute("class", "botao");
+    tres.setAttribute("id", "tres");
+    tres.appendChild(document.createTextNode("3"));
+
+    // operador 
+    let mais = document.createElement("div");
+    mais.setAttribute("class", "botao operador");
+    mais.setAttribute("id","mais");
+    mais.appendChild(document.createTextNode("+"));
+
+    botoes.appendChild(um);
+    botoes.appendChild(dois);
+    botoes.appendChild(tres);
+    botoes.appendChild(mais);
+
+    // linha 5
+
+    let zero = document.createElement("div");
+    zero.setAttribute("class", "botao zero");
+    zero.setAttribute("id", "zero");
+    zero.appendChild(document.createTextNode("0"));
+
+    let virgula = document.createElement("div");
+    virgula.setAttribute("class", "botao");
+    virgula.setAttribute("id", "virgula");
+    virgula.appendChild(document.createTextNode(","));
+
+    // operador
+
+    let igual = document.createElement("div");
+    igual.setAttribute("class", "botao operador");
+    igual.setAttribute("id", "igual");
+    igual.appendChild(document.createTextNode("="));
+
+    botoes.appendChild(zero);
+    botoes.appendChild(virgula);
+    botoes.appendChild(igual);
+
+    // funcoes de funcionamento
+
+    let valorAtual = "";
+    let valorAnterior = null;
+    let operacao = null;
+
+    function atualizarResultado(valor){
+        resultadoFinal.innerHTML = valor;
+    }
+
+    document.querySelectorAll(".botao").forEach(botao => { //seleciona todos os botões da calculadora
+        botao.addEventListener("click", () => { //percorre cada botão e adiciona um click
+            let valor = botao.textContent; //pega o conteúdo
+            if (!isNaN(valor) || valor === ",") { //verifica se é número ou vírgula
+                valorAtual += valor; //concatena na string
+                atualizarResultado(valorAtual); //exibe na tela
+            }
+        });
+    });
 }
