@@ -171,4 +171,84 @@ window.onload = function() {
             }
         });
     });
+
+    document.querySelectorAll(".botao.operador:not(#igual)").forEach(botao =>{ //selecionar todos os operadores com exceção do igual
+        botao.addEventListener("click", () =>{
+            if (valorAtual !== "") { 
+                valorAnterior = parseFloat(valorAtual.replace(",", "."));
+                operacao = botao.textContent;
+                valorAtual = ""; 
+                atualizarResultado(operacao);
+            };
+        });
+    });
+
+    document.getElementById("igual").addEventListener("click", ()=>{
+        if(valorAnterior !== null && operacao !== null && valorAtual !== ""){
+            let resultado;
+            let numAtual = parseFloat(valorAtual.replace(",", "."));
+
+            switch (operacao) {
+                case "+":
+                    resultado = valorAnterior + numAtual;
+                    break;
+                case "-":
+                    resultado = valorAnterior - numAtual;
+                    break;
+                case "x":
+                    resultado = valorAnterior * numAtual;
+                    break;
+                case "÷":
+                    resultado = numAtual !== 0 ? valorAnterior / numAtual : "Erro";
+                    break;
+            
+                default:
+                    resultado = "Erro";
+            }
+
+            atualizarResultado(resultado);
+            valorAtual = resultado.toString();
+            valorAnterior = null;
+            operacao = null;
+        }
+    });
+
+    document.getElementById("ac").addEventListener("click", ()=>{
+        valorAtual = "";
+        valorAnterior = null;
+        operacao = null;
+
+        atualizarResultado("0")
+    });
+
+    document.getElementById("maisMenos").addEventListener("click", ()=>{
+        if(valorAtual !== ""){
+            let aux = parseFloat(valorAtual.replace(",", "."));
+            aux *= -1;
+            valorAtual = aux.toString();
+            atualizarResultado(valorAtual);
+        }
+    });
+
+    document.getElementById("porcentagem").addEventListener("click", ()=>{
+        if(valorAtual !== ""){
+            let aux = parseFloat(valorAtual.replace(",", "."));
+
+            if (valorAnterior !== null && operacao !== null) {
+                aux = (valorAnterior * aux) / 100;
+            }
+            else{
+                aux = aux / 100;
+            }
+            valorAtual = aux.toString();
+            atualizarResultado(valorAtual);
+        }
+    });
+
+    document.getElementById("virgula").addEventListener("click", () => {
+        if (!valorAtual.includes(",")) { //verificando se o valorAtual já não contém uma vírgula
+            valorAtual += ",";  
+            atualizarResultado(valorAtual); //exibição
+        }
+    });
 }
