@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionando React à minha página</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function MeuElemento({escrita}){
+            return <h1>{escrita}</h1>;
+        }
+
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+
+        let i = 0;
+
+        function tick(){
+            const texto = 'Venha estudar na Fatec';
+
+            if(i < texto.length){
+                const frase = texto.substring(0,i+1);                
+                root.render(<MeuElemento escrita = {frase} />);
+                i++;
+            }
+            else{
+                i = 0;
+            }
+        }
+        setInterval(tick, 900);
+    </script>
+</body>
+</html>
